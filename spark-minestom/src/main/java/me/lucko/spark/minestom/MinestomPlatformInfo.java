@@ -31,12 +31,12 @@ public class MinestomPlatformInfo implements PlatformInfo {
 
     @Override
     public String getName() {
-        return "Minestom";
+        return "MitraLimbo";
     }
 
     @Override
     public String getBrand() {
-        return "Minestom";
+        return "MitraLimbo";
     }
 
     @Override
