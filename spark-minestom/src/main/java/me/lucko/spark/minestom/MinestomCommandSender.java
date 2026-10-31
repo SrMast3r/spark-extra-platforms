@@ -27,10 +27,14 @@ import net.minestom.server.command.ConsoleSender;
 import net.minestom.server.entity.Player;
 
 import java.util.UUID;
+import java.util.function.BiPredicate;
 
 public class MinestomCommandSender extends AbstractCommandSender<CommandSender> {
-    public MinestomCommandSender(CommandSender delegate) {
+    private final BiPredicate<CommandSender, String> permissions;
+
+    public MinestomCommandSender(CommandSender delegate, BiPredicate<CommandSender, String> permissions) {
         super(delegate);
+        this.permissions = permissions;
     }
 
     @Override
@@ -62,6 +66,6 @@ public class MinestomCommandSender extends AbstractCommandSender<CommandSender> 
         if (this.delegate instanceof ConsoleSender) {
             return true;
         }
-        return this.delegate.hasPermission(permission);
+        return this.permissions.test(this.delegate, permission);
     }
 }

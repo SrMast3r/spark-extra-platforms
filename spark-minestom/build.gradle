@@ -3,15 +3,15 @@ plugins {
 }
 
 tasks.withType(JavaCompile).configureEach {
-    // override, compile targeting J21
-    options.release = 21
+    // override, compile targeting J25 (required by Minestom)
+    options.release = 25
 }
 
 dependencies {
     implementation "me.lucko:spark-common:${project.baseVersion}-SNAPSHOT"
 
-    compileOnly 'net.minestom:minestom-snapshots:0ca1dda2fe'
-    compileOnly 'dev.hollowcube:minestom-ce-extensions:1.2.0'
+    compileOnly 'net.minestom:minestom:2026.10.07-26.2'
+    compileOnly 'org.slf4j:slf4j-api:2.0.17'
     implementation 'com.google.guava:guava:19.0'
 }
 
@@ -21,7 +21,7 @@ processResources {
                 'pluginVersion': project.pluginVersion,
                 'pluginDescription': project.pluginDescription
         )
-        include 'extension.json'
+        include 'spark-minestom.version'
     }
 }
 
